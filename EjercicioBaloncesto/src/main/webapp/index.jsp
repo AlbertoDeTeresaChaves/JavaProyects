@@ -25,8 +25,17 @@
                         Statement s = conexion.createStatement();
                         
                         ResultSet listado = s.executeQuery ("SELECT * FROM socio");
+                        
+                        Statement z = conexion.createStatement();
+                        
+                        ResultSet jefes = z.executeQuery ("SELECT ENAME,EMPNO FROM EMP ORDER BY 1");
+                        
+                        Statement w = conexion.createStatement();
+                        
+                        ResultSet departamentos = z.executeQuery ("SELECT DNAME,DEPTNO FROM DEPT");
+                        
                     %>
-                    <table class="table table-striped">
+                    <table class="	">
                         <tr><th>Nº de Socio</th><th>Nombre</th><th>Estatura</th><th>Edad</th><th>Localidad</th></tr>
                         <form action="grabaSocio.jsp" method="get">
                             <tr><td><input type="text" name="socioID" size="5"></td>
