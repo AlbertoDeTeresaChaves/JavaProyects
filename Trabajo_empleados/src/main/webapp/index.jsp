@@ -23,47 +23,63 @@
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_scott","root","root");
                 
                 Statement s = conexion.createStatement();
-                ResultSet listado = s.executeQuery("Select * from emp");
+                ResultSet listado = s.executeQuery("Select * from EMP");
                 
-                Statement z = conexion.createStatement();         
-                ResultSet jefes = z.executeQuery ("SELECT ENAME,EMPNO FROM EMP ORDER BY 1");
+                Statement z = conexion.createStatement();
+                ResultSet jefes = z.executeQuery("SELECT ENAME,EMPNO FROM EMP WHERE EMPNO IN(SELECT DISTINCT MGR FROM EMP WHERE MGR IS NOT NULL) ORDER BY 1");
                 
                 Statement w = conexion.createStatement();          
-                ResultSet departamentos = z.executeQuery ("SELECT DNAME,DEPTNO FROM DEPT");
+                ResultSet departamentos = w.executeQuery ("SELECT DNAME,DEPTNO FROM DEPT ORDER BY 1");
             %>
             <table class="table table-striped">
                 <tr><th>EMPNO</th><th>ENAME</th><th>JOB</th><th>MGR</th><th>SAL</th><th>COMM</th><th>DEPTNO</th><th>HIREDATE</th></tr>  
-                <form action="get">
-                    <tr><td><input type="text" name="EMPNO"></td>
-                        <td><input type="text" name="ENAME"></td>
-                        <td><input type="text" name="JOB"></td>
+                <form method="get" action="grabarSocio.jsp">
+                    <tr><td><input type="text" name="empNo" size="5"></td>
+                        <td><input type="text" name="eName" size="5"></td>
+                        <td><input type="text" name="job"size="5"></td>
                     <td><select name="mgr">
                         <% 
                         while(jefes.next()){
                             %>
-                            <option  value="<%=jefes.getString("EMPNO") %>"> <%=jefes.getString("ENAME") %></option>
+                            <option value="<%=jefes.getString("EMPNO") %>"> <%=jefes.getString("ENAME") %></option>
                             <%
                         }
                         %>
-                    </td></select>
-                        <td><input type="text" name="SAL"></td>
-                        <td><input type="text" name="COMM"></td>
+                   </select> </td>
+                        <td><input type="text" name="SAL" size="5"></td>
+                        <td><input type="text" name="COMM" size="5"></td>
                     <td><select name="DEPTNO">
                         <%
                         while(departamentos.next()){
                             %>
-                            <option value="<%=departamentos.getString("DEPTNO") %>"> <%=departamentos.getString("ENAME")%></option>
+                            <option value="<%=departamentos.getString("DEPTNO") %>"> <%=departamentos.getString("DNAME")%></option>
                             <%
                         }
                         %>
-                    </td></select>
-                        <td><input type="text" name="HIREDATE"></td>
-                    
-                </form>
+                    </select></td>
+                        <td><input type="text" name="HIREDATE" size="5"></td>
+						
+                    <td><button type="submit" value="Añadir" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span>Añadir</button>
+                    </td>
                     </tr>
-                
-            </table>
-        </div>
-    </div>
+                </form>
+            <%
+            while(listado.next()){
+            	out.println("<tr><td>");
+                out.println(listado.getString("EMPNO")+"</td>");
+                out.println("<td>"+ listado.getString("ENAME")+"</td>");         
+                out.println("<td>"+ listado.getString("JOB")+"</td>");
+                out.println("<td>"+ listado.getString("MGR")+"</td>");
+                out.println("<td>"+ listado.getString("SAL")+"</td>");
+                out.println("<td>"+ listado.getString("COMM")+"</td>");
+                out.println("<td>"+ listado.getString("EMPNO")+"</td>");
+                out.println("<td>"+ listado.getString("HIREDATE")+"</td>");
+            }
+            %>
+           </table>
+		</div>
+	</div>
+ 
 </body>
 </html>
