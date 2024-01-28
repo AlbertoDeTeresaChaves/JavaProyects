@@ -20,7 +20,7 @@
             </div>
             <% 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_scott","root","root");
+                Connection conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bd_scott","root","1234");
                 
                 Statement s = conexion.createStatement();
                 ResultSet listado = s.executeQuery("Select * from EMP");
