@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Agregar Empleado</title>
+<title>Agregar Empleado - Alberto</title>
 </head>
 <body>
 	<%
