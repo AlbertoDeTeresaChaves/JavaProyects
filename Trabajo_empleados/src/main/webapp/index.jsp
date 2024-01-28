@@ -33,7 +33,7 @@
             %>
             <table class="table table-striped">
                 <tr><th>EMPNO</th><th>ENAME</th><th>JOB</th><th>MGR</th><th>SAL</th><th>COMM</th><th>DEPTNO</th><th>HIREDATE</th></tr>  
-                <form method="get" action="grabarSocio.jsp">
+                <form method="get" action="grabarEmpleado.jsp">
                     <tr><td><input type="text" name="empNo" size="5"></td>
                         <td><input type="text" name="eName" size="5"></td>
                         <td><input type="text" name="job"size="5"></td>
