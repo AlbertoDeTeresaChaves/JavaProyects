@@ -92,14 +92,14 @@
                 </form>
              </td>
              <td>
-             	<from action="eliminarEmpleado.jsp" method="get">
+             	<form action="eliminarEmpleado.jsp" method="get">
              		<input type="hidden" name="empno" value="<%=listado.getString("EMPNO")%>">
                     <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
-             	</from>
+             	</form>
              </td>
              
              <%
-            }
+            }conexion.close();
              %>
            </table>
 		</div>
