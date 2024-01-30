@@ -74,7 +74,7 @@
                 out.println("<td>"+ listado.getString("MGR")+"</td>");
                 out.println("<td>"+ listado.getString("SAL")+"</td>");
                 out.println("<td>"+ listado.getString("COMM")+"</td>");
-                out.println("<td>"+ listado.getString("EMPNO")+"</td>");
+                out.println("<td>"+ listado.getString("DEPTNO")+"</td>");
                 out.println("<td>"+ listado.getString("HIREDATE")+"</td>");
             
             %>
